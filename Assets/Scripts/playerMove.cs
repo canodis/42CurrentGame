@@ -13,6 +13,7 @@ public class playerMove : MonoBehaviour
     private bool rollController = true;
     private bool _rollDelay = true;
     public bool canDash;
+    public bool isGuard;
     private bool _dashDelay = true;
     private bool dashController = true;
     public float _characterSpeed = 4;
@@ -43,7 +44,7 @@ public class playerMove : MonoBehaviour
         _axsis = _inputs.action.ReadValue<Vector2>(); // input'u okur ve _axis'e yazar.
         if (Convert.ToBoolean(_rollInput.action.ReadValue<float>()) == true) // ctrl tusuna basildigini algiliyor.
             canRoll = true;
-        if (!canRoll || !_rollDelay) // roll atmiyor ise
+        if ((!canRoll || !_rollDelay) && !isGuard) // roll atmiyor ise
         {
             if (Input.GetButton("Jump") && _controller.isGrounded) // space tusuna basildiysa
                 playerVelocity.y += Mathf.Sqrt(1.0f * -3.0f * gravityValue); // karakterin velocity'sini arttiriyor.
