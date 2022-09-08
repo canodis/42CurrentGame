@@ -63,7 +63,7 @@ public class playerMove : MonoBehaviour
                 _anim.SetTrigger("Dance");
         }
         // ------ ROLL ------- //
-        if (canRoll && _rollDelay)
+        if (canRoll && _rollDelay && !isGuard)
         {
             Rolling();
             if (rollController)
@@ -74,7 +74,7 @@ public class playerMove : MonoBehaviour
             }
         }
         // ------ DASH ------- //
-        if (canDash && _dashDelay && !canRoll)
+        if (canDash && _dashDelay && !canRoll && !isGuard)
         {
             Dash();
             if (dashController)
